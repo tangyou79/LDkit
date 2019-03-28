@@ -19,19 +19,19 @@
     - [Genotype](#Genotype)
     - [Subgroup](#Subgroup)
 - [Usage](#Usage)
-    - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface-(GUI))
+    - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface-(GUI):)
     - [Steps for LD analysis](#Steps-for-LD-analysis)
         - [Step1: choose input files](#Step1:-choose-input-files)
         - [Step2: set parameters for filtering variants](#Step2:-set-parameters-for-filtering-variants)
-        - [Step3: choose LD types](##)
-        - [Step4: set parameters for plotting](##)
-        - [Step5: checking your settings]()
-        - [Step6: Run]()
-        - [Notes]()
-    - [Run using command line](##)
-        - [Step1: LD analysis]()
-        - [Step 2: Plot]()
-- [Examples](##Examples:)
+        - [Step3: choose LD types](#Step3:-choose-LD-types)
+        - [Step4: set parameters for plotting](#Step4:-set-parameters-for-plotting)
+        - [Step5: checking your settings](#Step5:-checking-your-settings)
+        - [Step6: Run](#Step6:-Run)
+        - [Notes](#Notes)
+    - [Run using command line](#Run-using-command-line)
+        - [Step1: LD analysis](#Step1:-LD-analysis)
+        - [Step2: Plot](#Step2:-Plot)
+- [Examples](#Examples:)
 
 ## Pre-requirement
 
@@ -234,7 +234,7 @@ Parameters:
 
 </br>
 
-### Step 2: Plot
+### Step2: Plot
 
 java -jar LDkit.jar --plot --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
 
