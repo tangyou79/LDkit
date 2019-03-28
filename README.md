@@ -21,7 +21,7 @@
 - [Usage](#Usage)
     - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface-(GUI):)
     - [Steps for LD analysis](#Steps-for-LD-analysis)
-        - [Step1: choose input files](#Step1:-choose-input-files)
+        - [Step1: choose input files](#Step1: choose input files)
         - [Step2: set parameters for filtering variants](#Step2:-set-parameters-for-filtering-variants)
         - [Step3: choose LD types](#Step3:-choose-LD-types)
         - [Step4: set parameters for plotting](#Step4:-set-parameters-for-plotting)
