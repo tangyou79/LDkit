@@ -38,15 +38,15 @@
 </br>
 
 
-**JDK1.8 or above. It can be downloaded at:**
+JDK1.8 or above. It can be downloaded at:
 
-**[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)**
+[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 
 </br>
 ## Installation
 </br>
-**LDkit is free of installation.**
+LDkit is free of installation.
 
 GUI package is under the GUI folder, please double-click the LDkit\_GUI.jar to start.
 
@@ -74,14 +74,14 @@ Subgroup should be formatted as:
 
 ### Run using Graphic User Interface (GUI):
 
-**GUI of LDkit is very easy to use. The main interface is like below:**
+GUI of LDkit is very easy to use. The main interface is like below:
 <p align="center" >
 <a>
 <img src="resutl/7.png" height="250px" width="450px">
 </a>
 </p>
 
-**Figure1: Interface of LDkit**
+Figure1: Interface of LDkit
 
 </br>
 
@@ -250,8 +250,8 @@ Parameters:
 
 ## Examples:
 
-1. **LD decay for one population **
-2. **LD decay for partial chromosomes in a population **
-3. **LD decay for multiple subpopulations **
-4. **LD block analysis **
-5. **LD site analysis **
+1. LD decay for one population 
+2. LD decay for partial chromosomes in a population 
+3. LD decay for multiple subpopulations 
+4. LD block analysis 
+5. LD site analysis 
