@@ -1,6 +1,6 @@
 
 
-#  LDkit  [![](https://img.shields.io/badge/Issues-0%2B-brightgreen.svg)](https://github.com/tangyou79/LDkit) [![](https://img.shields.io/badge/Release-v1.0.0-blue.svg)](https://github.com/tangyou79/LDkit)
+#  LDkit  [![](https://img.shields.io/badge/Issues-0%2B-brightgreen.svg)](https://github.com/tangyou79/LDkit/README.md) [![](https://img.shields.io/badge/Release-v1.0.0-blue.svg)](https://github.com/tangyou79/LDkit/README.md)
 
 ## a parallel computing toolkit for linkage disequilibrium analysis
 </br>
