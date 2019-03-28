@@ -15,7 +15,7 @@
 
 - [Pre-requirement](#Pre-requirement)
 - [Installation](#Installation)
-- [File Format](#FileFormat)
+- [File Format](#File-Format)
     - [Genotype](###)
     - [Subgroup](###)
 - [Usage](##Usage:)
