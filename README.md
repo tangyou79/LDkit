@@ -174,7 +174,7 @@ r2 or D’ could be chose here.
 
 </br>
 
-####S tep5: checking your settings
+#### Step5: checking your settings
 
 Before you click start, you could check your parameters at right bottom.
 
@@ -250,8 +250,8 @@ Parameters:
 
 ## Examples:
 
-1. ** LD decay for one population**
-2. ** LD decay for partial chromosomes in a population**
-3. ** LD decay for multiple subpopulations**
-4. ** LD block analysis**
-5. ** LD site analysis**
+1. ** LD decay for one population **
+2. ** LD decay for partial chromosomes in a population **
+3. ** LD decay for multiple subpopulations **
+4. ** LD block analysis **
+5. ** LD site analysis **
