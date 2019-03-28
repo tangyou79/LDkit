@@ -12,14 +12,14 @@
 
 </br>
 
-
+### Contents
 - [Pre-requirement](#Pre-requirement)
 - [Installation](#Installation)
 - [File Format](#File-Format)
     - [Genotype](#Genotype)
     - [Subgroup](#Subgroup)
 - [Usage](#Usage)
-    - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface-(GUI))
+    - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface)
     - [Steps for LD analysis](#Steps-for-LD-analysis)
         - [Step1: choose input files](#Step1-choose-input-files)
         - [Step2: set parameters for filtering variants](#Step2-set-parameters-for-filtering-variants)
@@ -31,10 +31,10 @@
     - [Run using command line](#Run-using-command-line)
         - [Step1: LD analysis](#Step1-LD-analysis)
         - [Step2: Plot](#Step2-Plot)
-- [Examples](#Examples:)
+- [Examples](#Examples)
 
 ## Pre-requirement
-
+**[back to top](#contents)**  
 </br>
 
 
@@ -46,7 +46,7 @@ JDK1.8 or above. It can be downloaded at:
 </br>
 
 ## Installation
-
+**[back to top](#contents)**  
 </br>
 LDkit is free of installation.
 
@@ -57,7 +57,7 @@ Executable file **LDkit.jar** for command line users is on the executable folder
 </br>
 
 ## File Format
-
+**[back to top](#contents)**  
 ### Genotype:
 
 Both PLINK ped and map format  and VCF format  are supported. VCF format could be compressed or uncompressed.
@@ -73,9 +73,9 @@ Subgroup should be formatted as:
 </br>
 
 ## Usage:
-
-### Run using Graphic User Interface (GUI)
-
+**[back to top](#contents)**  
+### Run using Graphic User Interface
+**[back to top](#contents)**  
 GUI of LDkit is very easy to use. The main interface is like below:
 <p align="center" >
 <a>
@@ -88,10 +88,10 @@ Figure1: Interface of LDkit
 </br>
 
 ### Steps for LD analysis:
-
+**[back to top](#contents)**  
 
 #### Step1 choose input files
-
+**[back to top](#contents)**  
 <p align="center" >
 <a>
 <img src="resutl/1.png"  width="450px">
@@ -107,7 +107,7 @@ Figure1: Interface of LDkit
 </br>
 
 #### Step2 set parameters for filtering variants
-
+**[back to top](#contents)**  
  
 <p align="center" >
 <a>
@@ -128,7 +128,7 @@ Output file: save output.
 </br>
 
 #### Step3 choose LD types
-
+**[back to top](#contents)**  
 <p align="center" >
 <a>
 <img src="resutl/3.png"  width="450px">
@@ -141,7 +141,7 @@ LD site refer to the LD between a given site and a given region.
 </br>
 
 #### Step4 set parameters for plotting
-
+**[back to top](#contents)**  
 1. This step could be skipped if you want to plot with other software.
 
 2. If you want to plot with previous results, you could just input the previous results and adjust the parameters here. You needn&#39;t to run step1-step3 again.
@@ -165,7 +165,7 @@ ResultName: file name for output.
 </br>
 
 #### Step5 choose LD measurements
-
+**[back to top](#contents)**  
 <p align="center" >
 <a>
 <img src="resutl/5.png"  width="450px">
@@ -177,7 +177,7 @@ r2 or D’ could be chose here.
 </br>
 
 #### Step5: checking your settings
-
+**[back to top](#contents)**  
 Before you click start, you could check your parameters at right bottom.
 
 <p align="center" >
@@ -189,11 +189,11 @@ Before you click start, you could check your parameters at right bottom.
 </br>
 
 #### Step6 Run
-
+**[back to top](#contents)**  
 After clicking the start button, the dynamic DNA strand shown above will run.
 
 #### Notes:
-
+**[back to top](#contents)**  
 1. If your input is a folder, you should make sure there is only file format. If more than one format in the folder, only the first appeared one will be used;
 
 2. Do not support multiple files input for PLINK format;
@@ -203,9 +203,9 @@ After clicking the start button, the dynamic DNA strand shown above will run.
 </br>
 
 ## Run using command line
-
+**[back to top](#contents)**  
 ### Step1 LD analysis:
-
+**[back to top](#contents)**  
 java -jar LDkit.jar --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
 
 Parameters:
@@ -235,7 +235,7 @@ Parameters:
 </br>
 
 ### Step2 Plot
-
+**[back to top](#contents)**  
 java -jar LDkit.jar --plot --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
 
 Parameters:
@@ -250,8 +250,8 @@ Parameters:
 
 </br>
 
-## Examples:
-
+## Examples
+**[back to top](#contents)**  
 1. LD decay for one population 
 2. LD decay for partial chromosomes in a population 
 3. LD decay for multiple subpopulations 
