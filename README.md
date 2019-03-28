@@ -19,18 +19,18 @@
     - [Genotype](#Genotype)
     - [Subgroup](#Subgroup)
 - [Usage](#Usage)
-    - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface-(GUI):)
+    - [Run using Graphic User Interface (GUI)](#Run-using-Graphic-User-Interface-(GUI))
     - [Steps for LD analysis](#Steps-for-LD-analysis)
-        - [Step1: choose input files](#Step1: choose input files)
-        - [Step2: set parameters for filtering variants](#Step2:-set-parameters-for-filtering-variants)
-        - [Step3: choose LD types](#Step3:-choose-LD-types)
-        - [Step4: set parameters for plotting](#Step4:-set-parameters-for-plotting)
-        - [Step5: checking your settings](#Step5:-checking-your-settings)
-        - [Step6: Run](#Step6:-Run)
+        - [Step1: choose input files](#Step1-choose-input-files)
+        - [Step2: set parameters for filtering variants](#Step2-set-parameters-for-filtering-variants)
+        - [Step3: choose LD types](#Step3-choose-LD-types)
+        - [Step4: set parameters for plotting](#Step4-set-parameters-for-plotting)
+        - [Step5: checking your settings](#Step5-checking-your-settings)
+        - [Step6: Run](#Step6-Run)
         - [Notes](#Notes)
     - [Run using command line](#Run-using-command-line)
-        - [Step1: LD analysis](#Step1:-LD-analysis)
-        - [Step2: Plot](#Step2:-Plot)
+        - [Step1: LD analysis](#Step1-LD-analysis)
+        - [Step2: Plot](#Step2-Plot)
 - [Examples](#Examples:)
 
 ## Pre-requirement
@@ -74,7 +74,7 @@ Subgroup should be formatted as:
 
 ## Usage:
 
-### Run using Graphic User Interface (GUI):
+### Run using Graphic User Interface (GUI)
 
 GUI of LDkit is very easy to use. The main interface is like below:
 <p align="center" >
@@ -90,7 +90,7 @@ Figure1: Interface of LDkit
 ### Steps for LD analysis:
 
 
-#### Step1: choose input files
+#### Step1 choose input files
 
 <p align="center" >
 <a>
@@ -106,7 +106,7 @@ Figure1: Interface of LDkit
 
 </br>
 
-#### Step2: set parameters for filtering variants
+#### Step2 set parameters for filtering variants
 
  
 <p align="center" >
@@ -127,7 +127,7 @@ Output file: save output.
 
 </br>
 
-#### Step3: choose LD types
+#### Step3 choose LD types
 
 <p align="center" >
 <a>
@@ -140,7 +140,7 @@ LD site refer to the LD between a given site and a given region.
 
 </br>
 
-#### Step4: set parameters for plotting
+#### Step4 set parameters for plotting
 
 1. This step could be skipped if you want to plot with other software.
 
@@ -164,7 +164,7 @@ ResultName: file name for output.
 
 </br>
 
-#### Step5: choose LD measurements
+#### Step5 choose LD measurements
 
 <p align="center" >
 <a>
@@ -188,7 +188,7 @@ Before you click start, you could check your parameters at right bottom.
 
 </br>
 
-#### Step6: Run
+#### Step6 Run
 
 After clicking the start button, the dynamic DNA strand shown above will run.
 
@@ -204,7 +204,7 @@ After clicking the start button, the dynamic DNA strand shown above will run.
 
 ## Run using command line
 
-### Step1: LD analysis:
+### Step1 LD analysis:
 
 java -jar LDkit.jar --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
 
@@ -234,7 +234,7 @@ Parameters:
 
 </br>
 
-### Step2: Plot
+### Step2 Plot
 
 java -jar LDkit.jar --plot --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
 
