@@ -79,7 +79,7 @@ Subgroup should be formatted as:
 GUI of LDkit is very easy to use. The main interface is like below:
 <p align="center" >
 <a>
-<img src="resutl/7.png" height="250px" width="450px">
+<img src="resutl/7.png" width="450px">
 </a>
 </p>
 
@@ -206,7 +206,7 @@ After clicking the start button, the dynamic DNA strand shown above will run.
 **[back to top](#contents)**  
 ### Step1 LD analysis:
 **[back to top](#contents)**  
-java -jar LDkit.jar --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
+java -jar LDkit.jar --input <input files> --output <output file> [parameters]
 
 Parameters:
 
@@ -236,7 +236,7 @@ Parameters:
 
 ### Step2 Plot
 **[back to top](#contents)**  
-java -jar LDkit.jar --plot --input \&lt;input files\&gt; --output \&lt;output file\&gt; [parameters]
+java -jar LDkit.jar --plot --input <input files> --output <output file> [parameters]
 
 Parameters:
 
