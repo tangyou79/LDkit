@@ -206,7 +206,11 @@ After clicking the start button, the dynamic DNA strand shown above will run.
 ### Step1 LD analysis:
 **[back to top](#contents)**  
 
+```bash
 java -jar LDkit.jar --input [input files] --output [output file] [parameters]
+```
+
+
 
 Parameters:
 
@@ -237,7 +241,9 @@ Parameters:
 ### Step2 Plot
 **[back to top](#contents)**  
 
+```bash
 java -jar LDkit.jar --plot --input [input files] --output [output file] [parameters]
+```
 
 Parameters:
 
