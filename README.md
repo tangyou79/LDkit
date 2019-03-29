@@ -90,7 +90,7 @@ GUI of LDkit is very easy to use. The main interface is like below:
 **[back to top](#contents)**  
 
 #### Step1 choose input files
-**[back to top](#contents)**  
+
 <p align="center" >
 <a>
 <img src="figures/1.png"  width="450px">
