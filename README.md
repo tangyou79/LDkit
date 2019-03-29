@@ -83,7 +83,7 @@ Subgroup should be formatted as:
 ## Usage:
 **[back to top](#contents)**  
 ### Run using Graphic User Interface
-**[back to top](#contents)**  
+
 GUI of LDkit is very easy to use. The main interface is like below:
 <p align="center" >
 <a>
