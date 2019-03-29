@@ -192,7 +192,7 @@ Before you click start, you could check your parameters at right bottom.
 After clicking the start button, the dynamic DNA strand shown above will run.
 
 #### Notes:
-**[back to top](#contents)**  
+
 1. If your input is a folder, you should make sure there is only file format. If more than one format in the folder, only the first appeared one will be used;
 
 2. Do not support multiple files input for PLINK format;
@@ -247,7 +247,7 @@ Parameters:
 
 --mergechr: plot all chromosomes or not. Default is yes.
 
---bin: the size of bin for calculating mean r2 or D&#39;.
+--bin: the size of bin for calculating mean r² or D&#39;.
 
 </br>
 
