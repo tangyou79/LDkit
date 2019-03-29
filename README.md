@@ -83,7 +83,6 @@ GUI of LDkit is very easy to use. The main interface is like below:
 </a>
 </p>
 
-Figure1: Interface of LDkit
 
 </br>
 
