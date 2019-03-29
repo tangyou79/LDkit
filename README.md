@@ -157,7 +157,7 @@ Merge: if your input is a folder with multiple files, you could merge them all t
 
 Mergechr: If your input is a file with multiple chromosomes, you could plot each chromosome by choosing no.
 
-Bin: the size of bin for calculating mean r2 or D’. 
+Bin: the size of bin for calculating mean r² or D’. 
 
 ResultName: file name for output.
 
