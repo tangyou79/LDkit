@@ -6,7 +6,7 @@
 </br>
 <p align="center" >
 <a>
-<img src="resutl/logo.png" >
+<img src="figures/logo.png" >
 </a>
 </p>
 
@@ -79,7 +79,7 @@ Subgroup should be formatted as:
 GUI of LDkit is very easy to use. The main interface is like below:
 <p align="center" >
 <a>
-<img src="resutl/7.png" width="450px">
+<img src="figures/7.png" width="450px">
 </a>
 </p>
 
@@ -94,7 +94,7 @@ Figure1: Interface of LDkit
 **[back to top](#contents)**  
 <p align="center" >
 <a>
-<img src="resutl/1.png"  width="450px">
+<img src="figures/1.png"  width="450px">
 </a>
 </p>
 
@@ -111,7 +111,7 @@ Figure1: Interface of LDkit
  
 <p align="center" >
 <a>
-<img src="resutl/2.png" width="450px">
+<img src="figures/2.png" width="450px">
 </a>
 </p>
 
@@ -131,7 +131,7 @@ Output file: save output.
 **[back to top](#contents)**  
 <p align="center" >
 <a>
-<img src="resutl/3.png"  width="450px">
+<img src="figures/3.png"  width="450px">
 </a>
 </p>
 
@@ -148,7 +148,7 @@ LD site refer to the LD between a given site and a given region.
 
 <p align="center" >
 <a>
-<img src="resutl/4.png" width="450px">
+<img src="figures/4.png" width="450px">
 </a>
 </p>
 
@@ -168,7 +168,7 @@ ResultName: file name for output.
 **[back to top](#contents)**  
 <p align="center" >
 <a>
-<img src="resutl/5.png"  width="450px">
+<img src="figures/5.png"  width="450px">
 </a>
 </p>
 
@@ -182,7 +182,7 @@ Before you click start, you could check your parameters at right bottom.
 
 <p align="center" >
 <a>
-<img src="resutl/6.png"  width="450px">
+<img src="figures/6.png"  width="450px">
 </a>
 </p>
 
