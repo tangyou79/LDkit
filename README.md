@@ -202,7 +202,7 @@ After clicking the start button, the dynamic DNA strand shown above will run.
 </br>
 
 ## Run using command line
-**[back to top](#contents)**  
+
 ### Step1 LD analysis:
 **[back to top](#contents)**  
 
