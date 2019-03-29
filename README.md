@@ -12,6 +12,14 @@
 
 </br>
 
+### Contact:
+> Yao Zhou(yao.zhou@genetics.ac.cn )
+
+
+</br>
+
+
+
 ### Contents
 - [Pre-requirement](#Pre-requirement)
 - [Installation](#Installation)
