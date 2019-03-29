@@ -171,7 +171,7 @@ ResultName: file name for output.
 </a>
 </p>
 
-r2 or D’ could be chose here. 
+r² or D’ could be chose here. 
 
 </br>
 
