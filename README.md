@@ -13,7 +13,8 @@
 </br>
 
 ### Contact:
-> Yao Zhou(yao.zhou@genetics.ac.cn )
+> You Tang(tangyou@neau.edu.cn)
+> Yao Zhou
 
 
 </br>
