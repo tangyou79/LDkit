@@ -226,7 +226,7 @@ Parameters:
 
 --input: input file or folder
 
---output: output file
+--out: output file
 
 --ws: max distance between two variants (kb) for LD decay. Default is 100 Kb.
 
