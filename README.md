@@ -252,7 +252,7 @@ Parameters:
 **[back to top](#contents)**  
 
 ```bash
-java -jar LDkit.jar --plot --input [input files] --output [output file] [parameters]
+java -jar LDkit.jar --plot --inp [input files] [parameters]
 ```
 
 Parameters:
