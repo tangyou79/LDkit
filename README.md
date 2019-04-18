@@ -217,14 +217,14 @@ After clicking the start button, the dynamic DNA strand shown above will run.
 **[back to top](#contents)**  
 
 ```bash
-java -jar LDkit.jar --input [input files] --output [output file] [parameters]
+java -jar LDkit.jar --infile [input files] --output [output file] [parameters]
 ```
 
 
 
 Parameters:
 
---input: input file or folder
+--infile: input file or folder
 
 --out: output file
 
