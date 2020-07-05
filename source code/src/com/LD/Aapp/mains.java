@@ -383,7 +383,7 @@ public class mains {
                     String[][] res = new WB().calLDsite(farstline, lastline, ppos, ggenotype, subpop.get(a), subpopFile, grops, Method, vc.getSiteLinegen(), vc.getSiteLineName());
                     res[0][0] = "chr:" + crop[0][0];
                     new block().writeblock(res, outFile + "-" + subpopname.get(a) + ".txt");
-                    new WriteHeatMap().WriteHeatMap(res, outFile + "-" + subpopname.get(a) + ".png");
+                    new WriteHeatMap().WriteHeatMap(outFile + "-" + subpopname.get(a) + ".txt.gz", outFile ,"");
                     System.out.println(new Date() + "   " + "Calculation " + subpopname.get(a));
                 }
             } catch (IOException | NumberFormatException ex) {
@@ -470,7 +470,7 @@ public class mains {
                             String[][] res = new WB().pedLDsite(farstline, lastline, ppos, ggenotype, subpop.get(a), subpopFile, grops, Method, SiteLineName, Integer.parseInt(tt[10]), Integer.parseInt(tt[11]), genp);
                             res[0][0] = "chr:" + crop[h][0];
                             new block().writeblock(res, outFile + "-" + subpopname.get(a) + ".txt");
-                            new WriteHeatMap().WriteHeatMap(res, outFile + "-" + subpopname.get(a) + ".png");
+                            new WriteHeatMap().WriteHeatMap(outFile + "-" + subpopname.get(a) + ".txt.gz", outFile + "-" + subpopname.get(a) + ".png","");
                             System.out.println(new Date() + "   " + "Calculation " + subpopname.get(a));
                         }
                     }
