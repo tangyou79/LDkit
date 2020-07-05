@@ -5,157 +5,209 @@
  */
 package com.LD.Chart;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.io.InputStream;
 import java.util.Map;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.CategoryAxis;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.LineAndShapeRenderer;
-import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
  * @author Mr-LiZhuo
+ * @param srcFilePath：源路径，既JAR包中的资源文件，路径相对于CLASSPATH
+ * @param destFilePath：目标路径，磁盘上的任意路径，绝对路径（一般为用户选择的文件夹路径）
  */
 public class writeChart {
 
-    public void writeChart(String chrom, String[] R, int size, Map<String, float[][]> res, Map<Integer, String> subpopnames) {
-        String[] chr = chrom.split(",");
-        int sizes = res.get(chr[0]).length;
-        if (R[7].equals("no") || R[7].equals("No")) {
-            for (String chr1 : chr) {
-                float[][] data = res.get(chr1);
-                CategoryDataset dataset = createDataset(data, subpopnames);
-                float min = min(data);
-                JFreeChart freeChart = createChart(dataset, chr1, min, sizes);
-                saveAsFile(freeChart, R[1] + "/" + R[3] + "-chr-" + chr1 + ".png", 1024, 800);
-            }
-        }
-        CategoryDataset dataset = createDataset(subpopnames, chrom, res);
-        float min = min(chrom, res);
-        JFreeChart freeChart = createChart(dataset, "All", min, sizes);
-        saveAsFile(freeChart, R[1] + "/" + R[3] + "-All" + ".png", 1024, 800);
-    }
+    public void CopyJs(String a) {
 
-    public static void saveAsFile(JFreeChart chart, String outputPath,
-            int weight, int height) {
-        FileOutputStream out = null;
+        String destFilePath = a;
+
+        String srcFilePath = "LD/Front/Front/echarts.min.js";
+
+        File destFile = new File(destFilePath);
         try {
-            File outFile = new File(outputPath);
-            if (!outFile.getParentFile().exists()) {
-                outFile.getParentFile().mkdirs();
+            BufferedInputStream fis = new BufferedInputStream((InputStream) this.getClass().getClassLoader().getResourceAsStream(srcFilePath));
+            FileOutputStream fos = new FileOutputStream(destFile);
+            byte[] buf = new byte[1024];
+            int c = 0;
+            while ((c = fis.read(buf)) != -1) {
+                fos.write(buf, 0, c);
             }
-            out = new FileOutputStream(outputPath);
-            ChartUtilities.writeChartAsPNG(out, chart, weight, height);
-            out.flush();
+            fis.close();
+            fos.close();
+
         } catch (IOException e) {
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                }
-            }
+            e.printStackTrace();
         }
     }
 
-    public static JFreeChart createChart(CategoryDataset categoryDataset, String chrom, float min, int sizes) {
-        JFreeChart jfreechart = ChartFactory.createLineChart("LD decay \n chromosome: " + chrom,
-                "Distance(Kb)",
-                "r²",
-                categoryDataset,
-                PlotOrientation.VERTICAL, true,
-                true,
-                false);
-        CategoryPlot plot = (CategoryPlot) jfreechart.getPlot();
-        plot.setBackgroundAlpha(0f);
-        plot.setForegroundAlpha(0.5f);
-        LineAndShapeRenderer lasp = (LineAndShapeRenderer) plot.getRenderer();
-        lasp.setStroke(new BasicStroke(2f));
-        lasp.setItemLabelsVisible(true);
-        lasp.setBaseItemLabelsVisible(true);
-        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setLowerBound(min);
-        CategoryAxis domainAxis = (CategoryAxis) plot.getDomainAxis();
-        domainAxis.setTickMarksVisible(true);
-        domainAxis.setTickLabelsVisible(true);
-        domainAxis.setMaximumCategoryLabelWidthRatio(1000);
+    public void write(String[] chr, String[] R, Map<String, float[][]> res, Map<Integer, String> subpopnames) throws IOException {
+
+        CopyJs(R[4] + "/echarts.min.js");
+
+        String type = "1";
+        if (type.equals("1")) {
+            type = "r²";
+        } else if (type.equals("2")) {
+            type = "D";
+        } else {
+            type = " ";
+        }
+
+        int sizes = res.get(chr[0]).length;
+
+        String path = R[4] + "/" + R[3] + "-All" + ".html";
+
+        FileWriter writer = new FileWriter(path);
+        String le = "0";
+        if ((chr.length + res.get(chr[0])[0].length) > 6) {
+            le = "18";
+        }
+        String tit1 = "<!DOCTYPE html>\n"
+                + "<html lang=\"en\">\n"
+                + "<head>\n"
+                + "	<meta charset=\"UTF-8\">\n"
+                + "	<title>LDkit Chart</title>\n"
+                + "	<script src=\"echarts.min.js\"></script>\n"
+                + "</head>\n"
+                + "<body>\n"
+                + "	<div id=\"main\" style=\"height: 600px; width: 1000px;\"></div>\n"
+                + "\n"
+                + "	<script type=\"text/javascript\">\n"
+                + "        // 基于准备好的dom，初始化echarts实例\n"
+                + "        var myChart = echarts.init(document.getElementById('main'));\n"
+                + "\n"
+                + "        // 指定图表的配置项和数据\n"
+                + "        var  option = {\n"
+                + "        	title: {\n"
+                + "        		text: 'LD decay',\n"
+                + "        		left:430\n"
+                + "        	},\n"
+                + "        	tooltip: {\n"
+                + "        		trigger: 'axis'\n"
+                + "        	},\n"
+                + "        	legend: {\n"
+                + "\n"
+                + "        		icon:'roundRect',\n"
+                + "        		type: 'scroll',\n"
+                + " 				orient: 'vertical',\n"
+                + "    		    right: 0,\n"
+                + "     		    top: 50,\n"
+                + "     		    bottom: 20,\n"
+                + "        		\n"
+                + "        	},\n"
+                + "        	grid: {\n"
+                + "        		left: '3%',\n"
+                + "        		right: '" + le + "%',\n"
+                + "        		bottom: '12%',\n"
+                + "\n"
+                + "        		containLabel: true\n"
+                + "        	},\n"
+                + "\n"
+                + "        	toolbox: {\n"
+                + "        		feature: {\n"
+                + "        			name:'保存',\n"
+                + "        			saveAsImage: {}\n"
+                + "        		}\n"
+                + "        	},\n"
+                + "        	xAxis: {\n"
+                + "        		type: 'category',\n"
+                + "        		name:'Distance (bp)',\n"
+                + "        		nameLocation :'middle',\n"
+                + "        		nameGap :30,\n"
+                + "        		nameTextStyle:{\n"
+                + "        			fontSize :15\n"
+                + "        		},\n"
+                + "\n"
+                + "        		boundaryGap: false,";
+        writer.write(tit1);
+        String xt = "data: [";
         for (int i = 0; i < sizes; i++) {
-            if (i % (sizes / 1000) == 0) {
-                domainAxis.setTickLabelPaint(String.format("%d", i), Color.black);
-            } else {
-                domainAxis.setTickLabelPaint(String.format("%d", i), new Color(0, 0, 0, 0));
-            }
+            xt = xt + "'" + i + "'" + ",";
         }
-        domainAxis.setTickLabelPaint(String.valueOf(0.1), Color.black);
-        return jfreechart;
-    }
+        xt = xt + "]\n"
+                + "        	},";
 
-    public static CategoryDataset createDataset(float[][] date, Map<Integer, String> subpopnames) {
-        DefaultCategoryDataset categoryDataset = new DefaultCategoryDataset();
-        for (int sa = 0; sa < date[0].length; sa++) {
-            for (int s = 0; s < date.length / 10; s++) {
-                categoryDataset.addValue(date[s * 10][sa], subpopnames.get(sa), String.format("%d", s));
-            }
-        }
-        return categoryDataset;
-    }
+        writer.write(xt);
 
-    public static CategoryDataset createDataset(Map<Integer, String> subpopnames, String chrom, Map<String, float[][]> res) {
-        DefaultCategoryDataset categoryDataset = new DefaultCategoryDataset();
-        String[] chr = chrom.split(",");
+        String tit2 = "	yAxis: {\n"
+                + "        		type: 'value',\n"
+                + "        		name:'"+type+"',\n"
+                + "        		nameLocation :'middle',\n"
+                + "        		nameGap :30,\n"
+                + "        	    splitLine:{\n"
+                + "        	    	 show:false\n"
+                + "        	    },\n"
+                + "        		nameTextStyle:{\n"
+                + "        			fontSize :20\n"
+                + "        		}\n"
+                + "        	},\n"
+                + "        	dataZoom: [{\n"
+                + "        		type: 'inside',\n"
+                + "        		start: 0,\n"
+                + "        		end: 10\n"
+                + "        	}, {\n"
+                + "        		start: 0,\n"
+                + "        		end: 10,\n"
+                + "        		handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',\n"
+                + "        		handleSize: '80%',\n"
+                + "        		handleStyle: {\n"
+                + "        			color: '#fff',\n"
+                + "        			shadowBlur: 3,\n"
+                + "        			shadowColor: 'rgba(0, 0, 0, 0.6)',\n"
+                + "        			shadowOffsetX: 2,\n"
+                + "        			shadowOffsetY: 2\n"
+                + "        		}\n"
+                + "        	}],\n";
+
+        writer.write(tit2);
+        String tit4 = "series:[\n";
+        writer.write(tit4);
         for (String chr1 : chr) {
+
             for (int sa = 0; sa < res.get(chr1)[0].length; sa++) {
-                for (int s = 0; s < res.get(chr1).length / 100; s++) {
-                    categoryDataset.addValue(res.get(chr1)[s * 100][sa], "chr: " + chr1 + "\t " + subpopnames.get(sa), String.format("%d", s));
+                String src = "";
+                src = src
+                        + "        	,{\n"
+                        + "        		name: 'chr: " + chr1 + "  " + subpopnames.get(sa)
+                        + "',\n"
+                        + "        		type: 'line',\n"
+                        + "        		sampling: 'max',\n"
+                        + "        		smooth:true,\n"
+                        + "            //stack: '总量',\n"
+                        + "            lineStyle:{\n"
+                        + "            	width:3\n"
+                        + "            },\n"
+                        + "            itemStyle:{\n"
+                        + "            	opacity : 0,\n"
+                        + "            },\n"
+                        + "            data: [";
+                for (int s = 0; s < res.get(chr1).length; s++) {
+
+                    src = src + res.get(chr1)[s][sa] + ",";
+
                 }
+                src = src + "]\n"
+                        + "        },";
+                writer.write(src);
             }
         }
-        return categoryDataset;
+
+        String tit3 = " ]\n"
+                + "      };\n"
+                + "\n"
+                + "\n"
+                + "        // 使用刚指定的配置项和数据显示图表。\n"
+                + "        myChart.setOption(option);\n"
+                + "    </script>\n"
+                + "</body>\n"
+                + "</html>";
+        writer.write(tit3);
+        writer.close();
+
     }
 
-    public static float min(float[][] a) {
-        float min = a[0][0];
-        for (int sa = 0; sa < a[0].length; sa++) {
-            for (float[] a1 : a) {
-                if (min > a1[sa]) {
-                    min = a1[sa];
-                }
-            }
-        }
-        BigDecimal bd = new BigDecimal((double) min);
-        bd = bd.setScale(2, 1);
-        float f1 = bd.floatValue();
-        return f1;
-    }
-
-    public static float min(String chrom, Map<String, float[][]> res) {
-        String[] chr = chrom.split(",");
-        float min = 1;
-        for (String chr1 : chr) {
-            for (int sa = 0; sa < res.get(chr1)[0].length; sa++) {
-                for (float[] get : res.get(chr1)) {
-                    if (get[sa] != Float.NaN) {
-                        if (min > get[sa]) {
-                            min = get[sa];
-                        }
-                    }
-                }
-            }
-        }
-        BigDecimal bd = new BigDecimal((double) min);
-        bd = bd.setScale(2, 1);
-        float f1 = bd.floatValue();
-        return f1;
-    }
 }
