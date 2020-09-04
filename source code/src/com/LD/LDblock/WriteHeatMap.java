@@ -24,13 +24,14 @@ import java.util.zip.GZIPInputStream;
  */
 public class WriteHeatMap {
 
+
     int[] pos;
 
     public void CopyJs(String a) {
 
         String destFilePath = a;
 
-        String srcFilePath = "LD/Front/Front/echarts.min.js";
+        String srcFilePath = "Front/echarts.min.js";
 
         File destFile = new File(destFilePath);
         try {
@@ -50,6 +51,8 @@ public class WriteHeatMap {
     }
 
     public void WriteHeatMap(String inpath, String path, String chrname) throws IOException {//LDblock的热图
+
+        //首先处理文件中的NAN情况
         CopyJs(path + "/echarts.min.js");
 
         String outpath = path + "result.html";
@@ -114,12 +117,15 @@ public class WriteHeatMap {
                 + "\n"
                 + "                        \n"
                 + "                        data: [";
-        double[][] data = re(inpath);
+
+        String pathnan = delNan(inpath);
+        double[][] data = re(pathnan);
 
         for (int a = 0; a < data.length; a++) {
 
             xdat = xdat + "'" + pos[a] + "',";
             ydata = ydata + "'" + pos[a] + "',";
+
         }
 
         xdat = xdat + "]\n"
@@ -169,6 +175,7 @@ public class WriteHeatMap {
 
             xdats = xdats + "'" + pos[m] + "',";
             ydats = ydats + "'" + pos[m] + "',";
+
         }
         xdats = xdats + "]\n"
                 + "            },";
@@ -185,7 +192,7 @@ public class WriteHeatMap {
                 + "\n"
                 + "                  data: [";
 
-        dat = data(dat, inpath);
+        dat = data(dat, pathnan);
 
         dat = dat + "]\n"
                 + "          }\n"
@@ -211,35 +218,35 @@ public class WriteHeatMap {
 
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
-                        new GZIPInputStream(
-                                new FileInputStream(path))));
+                        new FileInputStream(path)));
 
+        List<String> poslist = new ArrayList();
         int line = 0;
         String tempString = null;
         while ((tempString = reader.readLine()) != null) {
 
             line++;
 
-            if (line == 1) {
-                String[] temp = tempString.split("\t");
-                pos = new int[temp.length - 1];
-                for (int a = 1; a < temp.length; a++) {
-                    pos[a - 1] = Integer.parseInt(temp[a]);
-                }
-            }
             List<Float> tempt = new ArrayList();
             if (line != 1) {
 
                 String[] temp = tempString.split("\t");
+                poslist.add(temp[0]);
                 for (int s = 1; s < temp.length; s++) {
                     tempt.add(Float.valueOf(temp[s]));
                 }
                 data.add(tempt);
             }
         }
+
         double[][] da = re(data);
 
         reader.close();
+
+        pos = new int[poslist.size()];
+        for (int as = 0; as < poslist.size(); as++) {
+            pos[as] = Integer.parseInt(poslist.get(as));
+        }
 
         return da;
     }
@@ -248,8 +255,7 @@ public class WriteHeatMap {
 
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
-                        new GZIPInputStream(
-                                new FileInputStream(path))));
+                        new FileInputStream(path)));
 
         int line = 0;
         String tempString = null;
@@ -259,7 +265,6 @@ public class WriteHeatMap {
 
                 String[] temp = tempString.split("\t");
                 for (int s = 1; s < temp.length; s++) {
-
                     dat = dat + "[" + (line - 1) + "," + s + "," + temp[s] + "],";
                 }
 
@@ -274,16 +279,125 @@ public class WriteHeatMap {
     public double[][] re(List<List<Float>> data) {
         double[][] da = new double[data.size()][data.size()];
 
-        for (int i = 0; i < data.size(); i++) {
+        /*  for (int i = 0; i < data.size(); i++) {
             for (int h = 0; h < data.get(i).size(); h++) {
                 da[i][h] = data.get(i).get(h);
-                //  System.out.print(da[i][h] + "   ");
+                
             }
+            
+        }*/
+        return da;
+    }
 
-            // System.out.println("");
+    /**
+     * @param 处理文件中的NAN情况
+     */
+    public String delNan(String path) throws IOException {
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(
+                        new GZIPInputStream(
+                                new FileInputStream(path))));
+        List<String[]> noNaN = new ArrayList();
+
+        String tempString = null;
+        int line = 0;
+        int size = 0;
+        while ((tempString = reader.readLine()) != null) {
+            line = line + 1;
+            if (line > 1) {
+                String[] temp = tempString.split("\t");
+                int nanlength = 0;
+                for (int a = 1; a < temp.length; a++) {
+                    if (temp[a].equals("NaN")) {
+                        nanlength = nanlength + 1;
+                    }
+                }
+                if (nanlength != temp.length - 1) {
+                    size = size + 1;
+                    noNaN.add(temp);
+                }
+            }
         }
 
-        return da;
+        //将noNaN的行列交换
+        String[][] tempNaN = new String[line][noNaN.size()];
+
+        for (int b = 0; b < noNaN.size(); b++) {
+            for (int c = 0; c < noNaN.get(b).length; c++) {
+                tempNaN[c][b] = noNaN.get(b)[c];
+            }
+        }
+
+        /*    for (int out = 0; out < tempNaN.length;out++) {
+
+            System.out.println(Arrays.toString(tempNaN[out]));
+
+        }*/
+        List<String[]> noNaN2 = new ArrayList();
+        //  System.out.println(line+"   "+size);
+        if ((line - 1) != size) {//如果没有行被删除，那么列也不被删除
+            for (int b = 0; b < tempNaN.length; b++) {
+                int nanlength = 0;
+                for (int c = 0; c < tempNaN[0].length; c++) {
+                    if (tempNaN[b][c] == null) {
+                        tempNaN[b][c] = "nn";
+                    }
+
+                    if (tempNaN[b][c].equals("NaN")) {
+                        nanlength = nanlength + 1;
+                        break;
+                    }
+                }
+                if (nanlength == 0) {
+                    noNaN2.add(tempNaN[b]);
+                }
+            }
+        } else {
+            for (int b = 0; b < tempNaN.length; b++) {
+
+                for (int c = 0; c < tempNaN[0].length; c++) {
+                    if (tempNaN[b][c] == null) {
+                        tempNaN[b][c] = "nn";
+                    }
+
+                }
+
+                noNaN2.add(tempNaN[b]);
+
+            }
+
+        }
+        //将noNaN的行列交换
+        String[][] tempNaNt = new String[line][noNaN2.size()];
+
+        for (int b = 0; b < noNaN2.size(); b++) {
+            for (int c = 0; c < noNaN2.get(b).length; c++) {
+                tempNaNt[c][b] = noNaN2.get(b)[c];
+            }
+        }
+
+        FileOutputStream fos = new FileOutputStream(path + ".out");
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
+
+        for (int out = 0; out < tempNaNt.length; out++) {
+            String temp = "";
+            for (int out2 = 0; out2 < tempNaNt[0].length; out2++) {
+                if (tempNaNt[out][out2] == null) {
+
+                    writer.close();
+                    return path + ".out";
+                }
+
+                if (!tempNaNt[out][out2].equals("nn")) {
+                    temp = temp + tempNaNt[out][out2] + "\t";
+                }
+
+            }
+            writer.write(temp + "\n");
+            //System.out.print(temp+"\n");
+        }
+        writer.close();
+        return path + ".out";
     }
 
 }
