@@ -174,6 +174,7 @@ public class Method extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addGap(37, 37, 37))
         );
+        jRadioButton2.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
